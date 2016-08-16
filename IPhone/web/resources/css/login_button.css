@@ -1,0 +1,18 @@
+.login_button {
+  position: relative;
+  right: -62%;
+  color: white;
+  text-decoration: none;
+  padding: .2em 1em;
+  outline: none;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #00BFFF;
+  border-radius: 6px;
+  background: #00BFFF;
+  transition: 0.2s;
+} 
+.hidden{
+    display: none;
+}
+

@@ -111,8 +111,8 @@ public class ControlleMain {
             Souvenir next = iter.next();
             if (checks != null) {
                 for (String check : checks) {
-                    Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, "next " + next.getTitle());
-                    Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, "check " + check);
+                    //Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, "next " + next.getTitle());
+                   // Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, "check " + check);
                     if (next.getTitle().equals(check)) {
                         bp = true;
                         break;
@@ -246,6 +246,12 @@ public class ControlleMain {
     @RequestMapping("/login_admin")
     public ModelAndView loginAdmin() {
         ModelAndView mv = new ModelAndView("/login_admin");
+        return mv;
+    }
+    
+    @RequestMapping("/authentification")
+    public ModelAndView authentification() {
+        ModelAndView mv = new ModelAndView("/authentification");
         return mv;
     }
 

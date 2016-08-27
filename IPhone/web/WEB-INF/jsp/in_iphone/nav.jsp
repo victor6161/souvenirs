@@ -6,16 +6,16 @@
             <ul>
                 <li><a href="index.htm">Home</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle"  data-toggle="dropdown" href="#change-colors">Change Colors</a>
+                    <!-- <a class="dropdown-toggle"  data-toggle="dropdown" href="#change-colors">Change Colors</a>
 
-                    <ul class="dropdown-menu" role="menu" >
+                   <ul class="dropdown-menu" role="menu" >
                         <li role="presentation"><a role="menuitem" class="changecolor green-text" tabindex="-1" href="#" title="Green color">Green</a></li>
                         <li role="presentation"><a role="menuitem" class="changecolor blue-text" tabindex="-1" href="#" title="Blue color">Blue</a></li>
                         <li role="presentation"><a role="menuitem" class="changecolor red-text" tabindex="-1" href="#" title="Red color">Red</a></li>
                         <li role="presentation"><a role="menuitem" class="changecolor orange-text" tabindex="-1" href="#" title="Orange color">Orange</a></li>
                         <li role="presentation"><a role="menuitem" class="changecolor navy-text" tabindex="-1" href="#" title="Navy color">Navy</a></li>
                         <li role="presentation"><a role="menuitem" class="changecolor dark-green-text" tabindex="-1" href="#" title="Darkgreen color">Dark Green</a></li>
-                    </ul>
+                    </ul>-->
                 </li>
                
                 <!--<li><a href="#">Blog</a></li>-->
@@ -54,24 +54,24 @@
             <ul class="right">
                
                
-<!--                <li class="dropdown">           
-                    <a class="dropdown-toggle"  data-toggle="dropdown" href="index.htm">USA</a>
+                <li class="dropdown">           
+                <!--    <a class="dropdown-toggle"  data-toggle="dropdown" href="index.htm">USA</a>
                     <ul class="dropdown-menu" role="menu" >
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="ru-index.htm">Russia</a></li>
 
-                    </ul>
+                    </ul>-->
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle"  data-toggle="dropdown" href="#change-currency">Dollar (US)</a>
+                  <!--  <a class="dropdown-toggle"  data-toggle="dropdown" href="#change-currency">Dollar (US)</a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Euro (EU)</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Turkish Lira (TL)</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Indian Rupee (INR)</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dollar (US)</a></li>
-                    </ul>
+                    </ul>-->
                 </li>
                 <li><a href="#">Register</a></li>
-                <li><a href="#">Login</a></li>-->
+                <li><a href="authentification.htm">Login</a></li>
             </ul>
         </div><!-- /.col -->
     </div><!-- /.container -->

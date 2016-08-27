@@ -7,7 +7,8 @@
         </a>
 
         <ul class="dropdown-menu">
-            <li><a href="iphones.htm">Сувениры</a></li>
+            <li><a href="iphones.htm">Particleboard</a></li>
+            <li><a href="#">Plywood</a></li>
             <!--<li><a href="#">CPUs, Processors</a></li>-->
         </ul>
 </li>

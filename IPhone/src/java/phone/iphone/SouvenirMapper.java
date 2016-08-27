@@ -20,17 +20,17 @@ public class SouvenirMapper implements RowMapper<Souvenir> {
         Souvenir souvenir = new Souvenir();
         souvenir.setId(rs.getString("id"));
         souvenir.setTitle(rs.getString("title"));
-         souvenir.setLacquer(rs.getString("lacquer"));
+        souvenir.setLacquer(rs.getString("lacquer"));
         souvenir.setFastening(rs.getString("fastening"));
-        
-         souvenir.setBevel(rs.getString("bevel"));
-           souvenir.setLength(rs.getInt("length"));
+
+        souvenir.setBevel(rs.getString("bevel"));
+        souvenir.setLength(rs.getInt("length"));
         souvenir.setWeight(rs.getInt("weight"));
         souvenir.setThickness(rs.getInt("thickness"));
         souvenir.setPrice(rs.getInt("price"));
-          souvenir.setPhoto1(rs.getString("photo1"));
+        souvenir.setPhoto1(rs.getString("photo1"));
         souvenir.setPhoto2(rs.getString("photo2"));
-         souvenir.setPhoto3(rs.getString("photo3"));
+        souvenir.setPhoto3(rs.getString("photo3"));
         souvenir.setPhoto4(rs.getString("photo4"));
         souvenir.setDescription(rs.getString("description"));
         return souvenir;

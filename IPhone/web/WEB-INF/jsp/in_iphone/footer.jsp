@@ -247,7 +247,7 @@
         </svg>   -->
     </div><!-- /.footer-logo -->
     
-    <p class="regular-bold"> Souvenirs</p>
+    <p class="regular-bold"> Particleboard</p>
     
     <p>
  +375 (29) 255-88-88 <br>

@@ -42,6 +42,7 @@
              </script>
             </div>
     </div>
+                <!--
                 <div class="login_form">
                     <form action="user.htm"   id="login" >                    
                         <input id="customer" name="customer" type="text" placeholder="Логин"  >   
@@ -50,7 +51,7 @@
                         <input type="submit"  value="Вход">
                         <span id="customer_name">${customer_name}</span>
                     </form>
-                </div>
+                </div>-->
                                    
 </div><!-- /.contact-row -->
 <!-- ============================================================= SEARCH AREA ============================================================= -->

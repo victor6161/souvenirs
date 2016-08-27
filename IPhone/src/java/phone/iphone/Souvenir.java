@@ -1,18 +1,17 @@
-
 package phone.iphone;
 
 import java.util.ArrayList;
 
-
 public class Souvenir {
-    
+
     public Souvenir() {
-     
-    }  
+
+    }
+
     public Souvenir(String id, String title) {
         this.id = id;
         this.title = title;
-     ;
+        ;
     }
 
     public Souvenir(String id, String title, String lacquer, String fastening, String bevel, int length, int weigth, int thickness, int price, String photo1, String photo2, String photo3, String photo4, String description) {
@@ -144,13 +143,12 @@ public class Souvenir {
         return description;
     }
 
-
     String id;
     String title;
-    
+
     String lacquer;
     String fastening;
-    
+
     String bevel;
     int length;
     int weight;
@@ -161,5 +159,5 @@ public class Souvenir {
     String photo3;
     String photo4;
     String description;
-    
+
 }

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ControllerError {
 
     @RequestMapping(value = "/error-{id}", method = RequestMethod.GET)
-    public ModelAndView userSorexInfo(@PathVariable("id") String err) {
+    public ModelAndView error(@PathVariable("id") String err) {
         ModelAndView mv = new ModelAndView("error");
         
         mv.addObject("err", err);

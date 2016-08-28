@@ -132,61 +132,7 @@ public class ControlleMain {
     }
 
     /// ------------ Compare : Start ----------------- 
-    @RequestMapping(value = "/compare", method = RequestMethod.GET)
-    public ModelAndView compare(HttpSession session) {
-        ModelAndView mv = new ModelAndView("ru_compare");
-
-        ListCompare listCompare = (ListCompare) session.getAttribute("object_for_compare");
-        if (listCompare == null) {
-            listCompare = new ListCompare();
-        }
-        mv.addObject("object", listCompare.getList());
-        mv.addObject("customer_name", "Здравствуйте, " + session.getAttribute("username") + "!");
-        return mv;
-    }
-
-    @RequestMapping("/add-product-to-compare-list")
-    public @ResponseBody
-    ModelAndView addProductToCompareList(@RequestParam(value = "id") String id, HttpSession session) {
-        ModelAndView mv = new ModelAndView("ru_all_iphone");
-        Souvenir souvenir = iphoneJDBCTemplate.getSouvenir(id);
-        ListCompare listCompare = (ListCompare) session.getAttribute("object_for_compare");
-        int i;
-        if (listCompare == null) {
-            listCompare = new ListCompare();
-            i = 0;
-        }
-
-        listCompare.addSouvenir(souvenir);
-        session.setAttribute("object_for_compare", listCompare);
-
-        //!!!!! 
-        List<Souvenir> listSouvenir = iphoneJDBCTemplate.getListSouvenir();
-        mv.addObject("listSouvenir", listSouvenir);
-
-        ArrayList listTitle = new ArrayList();
-        for (i = 0; i < listSouvenir.size(); i++) {
-            listTitle.add(listSouvenir.get(i).getTitle());
-        }
-
-        mv.addObject("listTitle", listTitle);
-        mv.addObject("customer_name", "Здравствуйте, " + session.getAttribute("username") + "!");
-        return mv;
-    }
-
-    @RequestMapping("/del-product-from-compare-list")
-    public @ResponseBody
-    ModelAndView delProductFromCompareList(@RequestParam(value = "id") String id, HttpSession session) {
-        ModelAndView mv = new ModelAndView("ru_compare");
-        ListCompare listCompare = (ListCompare) session.getAttribute("object_for_compare");
-        listCompare.removeSouvenir(id);
-        session.setAttribute("object_for_compare", listCompare);
-
-        mv.addObject("object", listCompare.getList());
-        mv.addObject("customer_name", "Здравствуйте, " + session.getAttribute("username") + "!");
-        return mv;
-    }
-
+    
     @RequestMapping("/add-product-to-customer-basket")
     public @ResponseBody
     ModelAndView addProductToCustomerBasket(@RequestParam(value = "id") String id, HttpSession session) {
@@ -222,17 +168,7 @@ public class ControlleMain {
         return mv;
     }
 
-    @RequestMapping("/admin")
-    public ModelAndView admin(HttpServletRequest request) {
-        if (request.getParameter("username").equals("admin")) {
-            ModelAndView mv = new ModelAndView("/admin");
-            List<Souvenir> listSouvenir = iphoneJDBCTemplate.getListSouvenir();
-            mv.addObject("objects", listSouvenir);
-            return mv;
-        } else {
-            return new ModelAndView("/index_iphone");
-        }
-    }
+ 
 
     @RequestMapping(value = "/user", method = RequestMethod.GET, produces = {"text/html; charset=UTF-8"})
     public ModelAndView user(@RequestParam String customer, @RequestParam String password, HttpSession session) {
@@ -254,80 +190,4 @@ public class ControlleMain {
         ModelAndView mv = new ModelAndView("/authentification");
         return mv;
     }
-
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    @ResponseBody
-    public ModelAndView uploadFile(@RequestParam("file") MultipartFile multipartFile) {
-        ModelAndView mv = new ModelAndView("/admin");
-        if (!multipartFile.isEmpty()) {
-            try {
-                HSSFWorkbook myExcelBook = new HSSFWorkbook(new ByteArrayInputStream(multipartFile.getBytes()));
-                HSSFSheet myExcelSheet = myExcelBook.getSheet("Лист1");
-
-                Map namedParameters = new HashMap();
-                namedParameters.put("id", myExcelSheet.getRow(0).getCell(1).getStringCellValue());
-                namedParameters.put("title", myExcelSheet.getRow(1).getCell(1).getStringCellValue());
-                namedParameters.put("lacquer", myExcelSheet.getRow(2).getCell(1).getStringCellValue());
-                namedParameters.put("fastening", myExcelSheet.getRow(3).getCell(1).getStringCellValue());
-                namedParameters.put("bevel", myExcelSheet.getRow(4).getCell(1).getStringCellValue());
-                namedParameters.put("length", myExcelSheet.getRow(5).getCell(1).getNumericCellValue());
-                namedParameters.put("weight", myExcelSheet.getRow(6).getCell(1).getNumericCellValue());
-                namedParameters.put("thickness", myExcelSheet.getRow(7).getCell(1).getNumericCellValue());
-                namedParameters.put("price", myExcelSheet.getRow(8).getCell(1).getNumericCellValue());
-                namedParameters.put("photo1", myExcelSheet.getRow(9).getCell(1).getStringCellValue());
-                namedParameters.put("photo2", myExcelSheet.getRow(10).getCell(1).getStringCellValue());
-                namedParameters.put("photo3", myExcelSheet.getRow(11).getCell(1).getStringCellValue());
-                namedParameters.put("photo4", myExcelSheet.getRow(12).getCell(1).getStringCellValue());
-                namedParameters.put("photo5", myExcelSheet.getRow(13).getCell(1).getStringCellValue());
-                namedParameters.put("description", myExcelSheet.getRow(14).getCell(1).getStringCellValue());
-
-                List<Souvenir> listSouvenirTest = iphoneJDBCTemplate.getListSouvenir();
-
-                boolean uniqueKey = true;
-                for (int i = 0; i < listSouvenirTest.size(); i++) {
-                    if (listSouvenirTest.get(i).getId().equals(myExcelSheet.getRow(0).getCell(1).getStringCellValue())) {
-                        uniqueKey = false;
-                    }
-                }
-
-                if (uniqueKey) {
-                    iphoneJDBCTemplate.setSouvenir(namedParameters);
-                }
-
-                List<Souvenir> listSouvenir = iphoneJDBCTemplate.getListSouvenir();
-                mv.addObject("objects", listSouvenir);
-                return mv;
-
-            } catch (IOException ex) {
-                Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, null, ex);
-                return mv;
-            }
-        }
-        return mv;
-    }
-
-    @RequestMapping(value = "/generatePDF", method = RequestMethod.POST)
-    @ResponseBody
-    public ModelAndView generatePDF(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mv = new ModelAndView("/admin");
-        List<Souvenir> listSouvenir1 = iphoneJDBCTemplate.getListSouvenir();
-        List<Souvenir> listSouvenir2 = new ArrayList();
-        String[] checks = request.getParameterValues("print");
-
-        //  Logger.getLogger(ControllerIphone.class.getName()).log(Level.SEVERE,request.getParameter("factory") );
-        for (int i1 = 0; i1 < listSouvenir1.size(); i1++) {
-            for (String check : checks) {
-                if (listSouvenir1.get(i1).getId().equals(check)) {
-                    listSouvenir2.add(listSouvenir1.get(i1));
-                }
-            }
-        }
-        try {
-            new PDFBuilder().generatePDF(listSouvenir2, request, response);
-        } catch (DocumentException | IOException ex) {
-            Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return mv;
-    }
-
 }

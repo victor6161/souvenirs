@@ -31,6 +31,11 @@ public class ControllerAdmin {
     @Autowired
     IphoneJDBCTemplate iphoneJDBCTemplate;
     
+    @RequestMapping("/login_admin")
+    public ModelAndView loginAdmin() {
+        ModelAndView mv = new ModelAndView("/login_admin");
+        return mv;
+    }
     
     @RequestMapping("/admin")
     public ModelAndView admin(HttpServletRequest request) {
@@ -43,7 +48,8 @@ public class ControllerAdmin {
             return new ModelAndView("/index_iphone");
         }
     }
-     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile multipartFile) {
         ModelAndView mv = new ModelAndView("/admin");
@@ -94,7 +100,7 @@ public class ControllerAdmin {
         return mv;
     }
     
-     @RequestMapping(value = "/generatePDF", method = RequestMethod.POST)
+    @RequestMapping(value = "/generatePDF", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView generatePDF(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mv = new ModelAndView("/admin");

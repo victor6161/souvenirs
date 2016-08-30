@@ -58,18 +58,14 @@ public class ControlleMain {
     public ModelAndView iphones(HttpSession session) {
         ModelAndView mv = new ModelAndView("ru_all_iphone");
 
-        List<Souvenir> listSouvenir = iphoneJDBCTemplate.getListSouvenir();
-        mv.addObject("listSouvenir", listSouvenir);
+        List<Souvenir> listSouvenir1 = iphoneJDBCTemplate.getListSouvenir();
+        mv.addObject("listSouvenir", listSouvenir1);
 
-        ArrayList listTitle = new ArrayList();
-        for (int i = 0; i < listSouvenir.size(); i++) {
-            listTitle.add(listSouvenir.get(i).getTitle());
-        }
-
-        mv.addObject("listTitle", listTitle);
+       
+        mv.addObject("listTitle", unuqieList((ArrayList<Souvenir>) listSouvenir1));
 
         session.setAttribute("page", "iphones");
-        mv.addObject("customer_name", "Здравствуйте, " + session.getAttribute("username") + "!");
+
         return mv;
     }
 
@@ -83,7 +79,7 @@ public class ControlleMain {
     }
 
     @RequestMapping("/filter")
-    public ModelAndView filter(HttpServletRequest request,HttpSession session) {//@ResponseBody чтобы не было перенаправление
+    public ModelAndView filter(HttpServletRequest request, HttpSession session) {//@ResponseBody чтобы не было перенаправление
         ModelAndView mv = new ModelAndView("ru_all_iphone");
         String from = request.getParameter("from");
         String to = request.getParameter("to");
@@ -95,14 +91,11 @@ public class ControlleMain {
         }
 
         String[] checks = request.getParameterValues("filter_title");
-        
+
         List<Souvenir> listSouvenir1 = iphoneJDBCTemplate.getListSouvenir();
-        
-        ArrayList listTitle = new ArrayList();
-        for (int i = 0; i < listSouvenir1.size(); i++) {
-            listTitle.add(listSouvenir1.get(i).getTitle());
-        }
-        mv.addObject("listTitle", listTitle);
+       
+
+        mv.addObject("listTitle", unuqieList((ArrayList<Souvenir>) listSouvenir1));
         boolean bp;
 
         Iterator<Souvenir> iter = listSouvenir1.iterator();
@@ -111,15 +104,14 @@ public class ControlleMain {
             Souvenir next = iter.next();
             if (checks != null) {
                 for (String check : checks) {
-                    //Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, "next " + next.getTitle());
-                   // Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, "check " + check);
+                    //Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE, "next " + next.getTitle());                   
                     if (next.getTitle().equals(check)) {
                         bp = true;
                         break;
                     }
                 }
-            }else{
-                bp=true;
+            } else {
+                bp = true;
             }
             if ((next.getPrice() < Integer.parseInt(from) || next.getPrice() > Integer.parseInt(to)) || !bp) {
                 iter.remove();
@@ -132,62 +124,36 @@ public class ControlleMain {
     }
 
     /// ------------ Compare : Start ----------------- 
-    
-    @RequestMapping("/add-product-to-customer-basket")
-    public @ResponseBody
-    ModelAndView addProductToCustomerBasket(@RequestParam(value = "id") String id, HttpSession session) {
-        ModelAndView mv = new ModelAndView("ru_all_iphone");
-
-//        Logger.getLogger(ControllerSouvenirMain.class.getName()).log(Level.SEVERE, (String) session.getAttribute("username"));
-        Map map = new HashMap();
-        map.put("id_good", id);
-        map.put("customer_name", session.getAttribute("username"));
-
-        iphoneJDBCTemplate.addOrder(map);
-
-        Integer totalPrice = (Integer) session.getAttribute("total_price");
-        if (totalPrice == null) {
-            totalPrice = 0;
-        }
-
-        Souvenir souvenir = iphoneJDBCTemplate.getSouvenir(id);
-        totalPrice = totalPrice + souvenir.getPrice();
-
-        List<Souvenir> listSouvenir = iphoneJDBCTemplate.getListSouvenir();
-        mv.addObject("listSouvenir", listSouvenir);
-
-        ArrayList listTitle = new ArrayList();
-
-        for (int i = 0; i < listSouvenir.size(); i++) {
-            listTitle.add(listSouvenir.get(i).getTitle());
-        }
-        session.setAttribute("total_price", totalPrice);
-        mv.addObject("customer_name", "Здравствуйте," + session.getAttribute("username") + "!");
-        mv.addObject("total_price", totalPrice);
-        mv.addObject("listTitle", listTitle);
-        return mv;
-    }
-
- 
-
     @RequestMapping(value = "/user", method = RequestMethod.GET, produces = {"text/html; charset=UTF-8"})
     public ModelAndView user(@RequestParam String customer, @RequestParam String password, HttpSession session) {
         ModelAndView mv = new ModelAndView("/index_iphone");
-       
-        mv.addObject("customer_name", "Здравствуйте, " + customer + "!");
+
+        
         session.setAttribute("username", customer);
         return mv;
     }
 
-    @RequestMapping("/login_admin")
-    public ModelAndView loginAdmin() {
-        ModelAndView mv = new ModelAndView("/login_admin");
-        return mv;
-    }
-    
     @RequestMapping("/authentification")
     public ModelAndView authentification() {
         ModelAndView mv = new ModelAndView("/authentification");
         return mv;
+    }
+    
+    private ArrayList<String> unuqieList(ArrayList<Souvenir> listSouvenir1){
+         boolean uniqueTitle;
+        ArrayList <String> listTitle = new ArrayList<>();
+        for (int io = 0; io < listSouvenir1.size(); io++) {
+            uniqueTitle=true;
+            for (int ii = 0; ii < listTitle.size(); ii++) {
+                if (listTitle.get(ii).equals(listSouvenir1.get(io).getTitle())) {
+                    uniqueTitle = false;
+                }
+            }
+            if (uniqueTitle) {
+                listTitle.add(listSouvenir1.get(io).getTitle());
+            }
+        }
+        return listTitle;
+        
     }
 }

@@ -57,19 +57,19 @@
         <![endif]-->
         
        
-        <title>JSP Page</title>
+        <title>Goods</title>
     </head>
     <body>
         
         <div class="container">
             <div class="col-lg-3">
                 <div class="widget">
-                <h1>Фильтр</h1>
+                <h1>Filter</h1>
                 
                     
                 <form action="filter.htm">
                     
-                    <b><a data-toggle="collapse" style="cursor:pointer" data-target="#demo">Название таблички</a></b>
+                    <b><a data-toggle="collapse" style="cursor:pointer" data-target="#demo">Sort</a></b>
                         <ul id="demo" class="collapse">
                             <c:forEach items="${listTitle}" var="varTitle">
                                 <li>
@@ -79,14 +79,14 @@
                         </ul>  
                     
                     
-                    <h2>Цена</h2>
+                    <h2>Price</h2>
                     
-                    От: <input id="from" name="from" type="text" size="10" maxlength="10" onkeydown = "javascript: return ((event.keyCode>47)&&(event.keyCode<58)||(event.keyCode==8)||(event.keyCode==127))" onkeyup="doAjax()" >
+                    From: <input id="from" name="from" type="text" size="10" maxlength="10" onkeydown = "javascript: return ((event.keyCode>47)&&(event.keyCode<58)||(event.keyCode==8)||(event.keyCode==127))" onkeyup="doAjax()" >
                     <br><br>
-                    До: <input id="to" name="to" type="text" size="10" maxlength="10" onkeydown = "javascript: return ((event.keyCode>47)&&(event.keyCode<58)||(event.keyCode==8)||(event.keyCode==127))" onkeyup="doAjax()">
+                    To: <input id="to" name="to" type="text" size="10" maxlength="10" onkeydown = "javascript: return ((event.keyCode>47)&&(event.keyCode<58)||(event.keyCode==8)||(event.keyCode==127))" onkeyup="doAjax()">
                      <span id="insert"></span>
                     <hr>
-                    <input  type="submit" value="Выбрать Сувениры"/>
+                    <input  type="submit" value="Choice"/>
                 </form>
                 </div>
             </div>          
@@ -113,7 +113,8 @@
                                         Цена: ${souvenir.price}</b>
                                     </center>
                                     <center>
-                                        <a href="add-product-to-customer-basket.htm?id=${souvenir.id}" class="le-button">в корзину</a>
+                                       <a href="add-product-to-customer-basket.htm?id=${souvenir.id}" class="le-button">в корзину</a>
+                                        
                                     </center>
                                     <center>
                                         <a class="btn-add-to-wishlist" href="add-product-to-wish-list.htm?id=${souvenir.id}">в понравившиеся</a>
@@ -204,6 +205,23 @@
             });
         }
     </script>-->
+  
+    <script type="text/javascript">
+        function doAjax(){
+            $.ajax({
+                url:'add-product-to-customer-basket.htm',
+                data:({id : $('#ParticleboardId').val()}),
+             
+                success:function(data){
+                        $('#total_price').html(data);
+                        console.log(data);
+                        
+                    }  
+            });
+        }
+    </script>
+  
+  
     
     <!-- For demo purposes â can be removed on production : End -->
 

@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-10"></div>
                 <form action="index.htm">
-                    <input type="submit"  value="Выйти">
+                    <input type="submit"  value="Exit">
                 </form>
             </div>
         </div>
@@ -66,7 +66,7 @@
                         </thead>
                         <tbody>
                         <form action="generatePDF.htm" method="POST" accept-charset="UTF-8" >
-                        
+
                             <c:forEach var="o" items="${objects}">
                                 <tr>
                                     <td>${o.id} <input type="checkbox" name="print" value="${o.id}"></td>
@@ -85,8 +85,8 @@
                                     <td>${o.description}</td>
                                 </tr>
                             </c:forEach>
-                           
-                        </tbody>
+
+                            </tbody>
                     </table>
 
                 </div>
@@ -97,22 +97,22 @@
 
             <div class="col-lg-5">
                 <div class="row">
-                       <!-- Название предприятия: <input type="text" name="factory" maxlength="30"   ><br><br>-->
-                        <input type="submit" value="Сделать предложение">
-                            
-                        </form>
-                     
+                    <!-- Название предприятия: <input type="text" name="factory" maxlength="30"   ><br><br>-->
+                    <input type="submit" value="Make proposal">
+
+                    </form>
+
 
 
                 </div>
-                
+
             </div>
             <div class="col-lg-2"></div>
             <div class="col-lg-5">
                 <div class="row">
                     <form method="POST" action="uploadFile.htm" enctype="multipart/form-data">
-                        <input type="file" name="file"> <br>
-                        <input type="submit" value="Добавить Сувенир">
+                        <input type="file" name="file" value="Choose File"> <br>
+                        <input type="submit" value="add goods">
                     </form>
                 </div>
             </div>

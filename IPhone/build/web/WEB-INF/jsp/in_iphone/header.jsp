@@ -15,7 +15,7 @@
             <!-- ============================================================= LOGO ============================================================= -->
 <div class="logo">
     <a href="index.htm">
-        <img alt="vmc_and_hmc" src="resources/assets/images/logo_lion.jpg" width="75" height="105"/>
+       <!-- <img alt="vmc_and_hmc" src="resources/assets/images/logo_lion.jpg" width="75" height="105"/>-->
         
     </a>
 </div><!-- /.logo -->

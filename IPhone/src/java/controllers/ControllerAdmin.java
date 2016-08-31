@@ -27,16 +27,16 @@ import phone.iphone.Souvenir;
 
 @Controller
 public class ControllerAdmin {
-    
+
     @Autowired
     IphoneJDBCTemplate iphoneJDBCTemplate;
-    
+
     @RequestMapping("/login_admin")
     public ModelAndView loginAdmin() {
         ModelAndView mv = new ModelAndView("/login_admin");
         return mv;
     }
-    
+
     @RequestMapping("/admin")
     public ModelAndView admin(HttpServletRequest request) {
         if (request.getParameter("username").equals("admin")) {
@@ -48,7 +48,7 @@ public class ControllerAdmin {
             return new ModelAndView("/index_iphone");
         }
     }
-    
+
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile multipartFile) {
@@ -99,7 +99,7 @@ public class ControllerAdmin {
         }
         return mv;
     }
-    
+
     @RequestMapping(value = "/generatePDF", method = RequestMethod.POST)
     @ResponseBody
     public ModelAndView generatePDF(HttpServletRequest request, HttpServletResponse response) {
@@ -123,5 +123,5 @@ public class ControllerAdmin {
         }
         return mv;
     }
-    
+
 }

@@ -14,8 +14,8 @@ public class IphoneJDBCTemplate implements IphoneDAO {
     private DataSource dataSource;
     private NamedParameterJdbcTemplate jdbcTemplateObject;
     
-    public void addOrder(Map namedParameters){
-        String sql="insert into orders(customer_name,id_good) values (:customer_name,:id_good);";
+    public void setOrder(Map namedParameters){
+        String sql="insert into orders(customer_name,phone,email,id_good) values (:customer_name,:phone,:email,:id_good);";
         jdbcTemplateObject.update(sql, namedParameters);
     }
     /*
@@ -48,6 +48,8 @@ public class IphoneJDBCTemplate implements IphoneDAO {
         jdbcTemplateObject.update(sql, namedParameters);
 
     }
+    
+  
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;

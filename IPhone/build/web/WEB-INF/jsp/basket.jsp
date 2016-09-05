@@ -13,7 +13,7 @@
         <%@ include file="in_iphone/header.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-   
+
 
 
         <!-- Customizable CSS -->
@@ -51,13 +51,17 @@
 
 
         <div class="container">
+            <div class="row"></div>
+            <center>
+
+            </center>
             <h1>Basket</h1>
             <div class="row"> </div>
             <div class="col-lg-9"> 
                 <div class="tab-content">
                     <div id="grid-view" class="products-grid fade tab-pane in active">
                         <div class="product-grid-holder"> 
-                            <c:forEach items="${arrayList}" var="souvenir"> 
+                            <c:forEach items="${arrayGoods}" var="souvenir"> 
                                 <div id="del" class="content"> 
                                     <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover"><!--  -->      
                                         <div class="image">
@@ -69,11 +73,19 @@
                                                 <br>
                                                 Price: ${souvenir.price}
                                                 <p>
-                                                    Amount:
-                                                    <INPUT TYPE="NUMBER" MIN="0" MAX="20" STEP="1" VALUE="1" SIZE="6">
+                                                Amount:
+                                                <INPUT TYPE="NUMBER" MIN="0" MAX="20" STEP="1" VALUE="1" SIZE="6">
                                                 </p>
                                             </b>
-                                        </center>  
+                                        </center> 
+                                        <center>
+                                            <a href="del-product-from-customer-basket.htm?id=${souvenir.id}" class="le-button">Del From Cart</a>
+                                        </center>
+
+                                        <center>
+
+                                            <a class="btn-add-to-compare" href="add-product-to-compare-list.htm?id=${souvenir.id}">Add To Compare</a>
+                                        </center>
                                     </div>
 
                                 </div>
@@ -83,22 +95,33 @@
                     </div>
                 </div>
             </div>
-            <div class="widget">
+
             <div class="row">
-                <div style="margin:10px"> 
-                <form>
+                <div class="col-lg-9"></div>
+                <div class="col-lg-3">
+                <span>
+                    ${order_succesful}
+                </span>
+                <span id="total_price">
+
+                </span>
+                <form action="order.htm">
                     <h3>Customer:</h3>
                     <h5>Enter your full name:</h5>
-                    <input type="text" name="username"><br><br>
+                    <input type="text" name="customer_name"><br><br>
                     <h5>Phone:</h5>
                     <input type="text" name="phone"><br><br>
                     <h5>e-mail:</h5>
                     <input type="text" name="email"><br><br>
-                    <input type="submit" class="btn"  value="order it">
+                    <input type="submit" class="btn btn-info"  value="Order it">
                 </form>
-               </div>
+                <form action="iphones.htm">
+                    <input type="submit" class="btn btn-info" value="Back">
+                </form>
+                </div>
             </div>
-            </div>
+        
+
         </div>
 
 

@@ -119,7 +119,7 @@ public class ControlleMain {
         }
 
         mv.addObject("listSouvenir", listSouvenir1);
-        mv.addObject("customer_name", "Здравствуйте, " + session.getAttribute("username") + "!");
+        
         return mv;
     }
 

@@ -82,6 +82,18 @@
                     <file>${file.reference.webapp-runner-7.0.22.1.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+                <library dirs="200">
+                    <file>${file.reference.spring-security-config-3.2.5.RELEASE.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.spring-security-core-3.2.5.RELEASE.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.spring-security-web-3.2.5.RELEASE.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
@@ -96,6 +108,7 @@
             <config-files>
                 <config-file>web/WEB-INF/applicationContext.xml</config-file>
                 <config-file>web/WEB-INF/dispatcher-servlet.xml</config-file>
+                <config-file>web/WEB-INF/application-security.xml</config-file>
             </config-files>
             <config-file-groups>
                 <config-file-group name="По умолчанию для группы">

@@ -51,78 +51,90 @@
 
 
         <div class="container">
-            <div class="row"></div>
-            <center>
-
-            </center>
             <h1>Basket</h1>
-            <div class="row"> </div>
-            <div class="col-lg-9"> 
-                <div class="tab-content">
-                    <div id="grid-view" class="products-grid fade tab-pane in active">
-                        <div class="product-grid-holder"> 
-                            <c:forEach items="${arrayGoods}" var="souvenir"> 
-                                <div id="del" class="content"> 
-                                    <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover"><!--  -->      
-                                        <div class="image">
-                                            <img  alt="" src="resources/assets/images/products/${souvenir.photo1}" width="246" height="186" />
+            <div class="row"> 
+                <div class="col-lg-3">
+
+                    <!-- ========================================= PRODUCT FILTER ========================================= -->
+                    <div class="widget">
+
+
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <p>
+                                    ${order_succesful}
+                                </p>
+                            </div>
+                        </div>
+                        <span id="total_price">
+
+                        </span>
+                        <form action="order.htm">
+                            <h3>Customer:</h3>
+                            <h5>Enter your full name:</h5>
+                            <input type="text" name="customer_name"><br><br>
+                            <h5>Phone:</h5>
+                            <input type="text" name="phone" onkeydown = "javascript: return ((event.keyCode > 47) && (event.keyCode < 58) || (event.keyCode == 8) || (event.keyCode == 127))"><br><br>
+                            <h5>e-mail:</h5>
+                            <input type="text" name="email"><br><br>
+                            <input type="submit" class="btn btn-info"  value="Order it">
+                        </form>
+                        <form action="iphones.htm">
+                            <input type="submit" class="btn btn-info" value="Back">
+                        </form>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <div class="col-lg-9"> 
+                    <div class="tab-content">
+                        <div id="grid-view" class="products-grid fade tab-pane in active">
+                            <div class="product-grid-holder"> 
+                                <c:forEach items="${arrayGoods}" var="souvenir"> 
+                                    <div id="del" class="content"> 
+                                        <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover"><!--  -->      
+                                            <div class="image">
+                                                <img  alt="" src="resources/assets/images/products/${souvenir.photo1}" width="246" height="186" />
+                                            </div>
+                                            <center>
+                                                <b>
+                                                    <a  href="iphone-${souvenir.id}.htm">${souvenir.title}</a>
+                                                    <br>
+                                                    Price: ${souvenir.price}
+                                                    <p>
+                                                        Amount:
+                                                        <INPUT TYPE="NUMBER" class="spinner-1" MIN="0" MAX="20" STEP="1" VALUE="1" SIZE="6">
+                                                    </p>
+                                                </b>
+                                            </center> 
+                                            <center>
+                                                <a href="del-product-from-customer-basket.htm?id=${souvenir.id}" class="le-button">Del From Cart</a>
+                                            </center>
+
+                                            <center>
+
+                                                <a class="btn-add-to-compare" href="add-product-to-compare-list.htm?id=${souvenir.id}">Add To Compare</a>
+                                            </center>
                                         </div>
-                                        <center>
-                                            <b>
-                                                <a  href="iphone-${souvenir.id}.htm">${souvenir.title}</a>
-                                                <br>
-                                                Price: ${souvenir.price}
-                                                <p>
-                                                Amount:
-                                                <INPUT TYPE="NUMBER" MIN="0" MAX="20" STEP="1" VALUE="1" SIZE="6">
-                                                </p>
-                                            </b>
-                                        </center> 
-                                        <center>
-                                            <a href="del-product-from-customer-basket.htm?id=${souvenir.id}" class="le-button">Del From Cart</a>
-                                        </center>
 
-                                        <center>
-
-                                            <a class="btn-add-to-compare" href="add-product-to-compare-list.htm?id=${souvenir.id}">Add To Compare</a>
-                                        </center>
                                     </div>
 
-                                </div>
-
-                            </c:forEach>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-lg-9"></div>
-                <div class="col-lg-3">
-                <span>
-                    ${order_succesful}
-                </span>
-                <span id="total_price">
-
-                </span>
-                <form action="order.htm">
-                    <h3>Customer:</h3>
-                    <h5>Enter your full name:</h5>
-                    <input type="text" name="customer_name"><br><br>
-                    <h5>Phone:</h5>
-                    <input type="text" name="phone"><br><br>
-                    <h5>e-mail:</h5>
-                    <input type="text" name="email"><br><br>
-                    <input type="submit" class="btn btn-info"  value="Order it">
-                </form>
-                <form action="iphones.htm">
-                    <input type="submit" class="btn btn-info" value="Back">
-                </form>
-                </div>
-            </div>
-        
-
-        </div>
 
 
 

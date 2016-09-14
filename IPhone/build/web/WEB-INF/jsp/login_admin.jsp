@@ -11,18 +11,18 @@
     </head>
     <body>
         <div style="position: absolute; top:40%;left:40%">
-        <form action="admin.htm" id="login">
-    
-            
-            <input id="username" name="username" type="text" placeholder="Логин" autofocus required><br><br>   
+            <form action="j_spring_security_check" id="login" method="POST">
+
+
+                <input id="username" name="username" type="text" placeholder="Логин" autofocus required><br><br>   
                 <input id="password" name="password"  type="password" placeholder="Пароль" required><br><br> 
-           
-            
-             <div style="position: absolute; left:30%">
-                <input type="submit" id="submit" value="ВОЙТИ">
+
+
+                <div style="position: absolute; left:30%">
+                    <input type="submit" id="submit" value="ВОЙТИ">
                 </div>
-            
-        </form>
-            </div>
+
+            </form>
+        </div>
     </body>
 </html>

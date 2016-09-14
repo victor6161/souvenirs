@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -70,6 +71,9 @@ public class ControllerBasket {
         id = (ArrayList<String>) session.getAttribute("idInBascet");
         if (id == null) {
             id = new ArrayList<>();
+            session.setAttribute("order_succesful", "bascet empty");
+        }else{//если в корзине что-то есть
+             session.setAttribute("order_succesful", "");
         }
         ArrayList<Souvenir> arrayList = new ArrayList<>();
 
@@ -112,18 +116,31 @@ public class ControllerBasket {
         if (idList == null) {
             return mv;
         }
-        
+
         for (String idList1 : idList) {
             Map namedParameters = new HashMap();
             namedParameters.put("customer_name", request.getParameter("customer_name"));
             namedParameters.put("phone", request.getParameter("phone"));
             namedParameters.put("email", request.getParameter("email"));
             namedParameters.put("id_good", idList1);
-            //amount??
+            //не забыть amount
             iphoneJDBCTemplate.setOrder(namedParameters);
         }
         session.setAttribute("order_succesful", "The order is successful.Managers will contact you.");
+        //удаление всех элементов списка после заказа
+        Iterator<String> iter = idList.iterator();
+        while (iter.hasNext()) {
+            iter.next();
+            iter.remove();
+        }
+        idList=null;
+        
+       
         session.setAttribute("idInBascet", idList);
+        
+        //стоимость =0
+        int totalPrice=0;
+        session.setAttribute("total_price", totalPrice);
         return mv;
     }
 }

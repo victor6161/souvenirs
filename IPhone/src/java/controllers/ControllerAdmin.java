@@ -33,8 +33,8 @@ public class ControllerAdmin {
 
     @RequestMapping("/login_admin")
     public ModelAndView loginAdmin() {
-        ModelAndView mv = new ModelAndView("/login_admin");
-        return mv;
+       
+        return  new ModelAndView("/login_admin");
     }
 
     @RequestMapping("/admin")
@@ -45,7 +45,7 @@ public class ControllerAdmin {
             mv.addObject("objects", listSouvenir);
             return mv;
         } else {
-            return new ModelAndView("/index_iphone");
+            return new ModelAndView("/login_admin");
         }
     }
 

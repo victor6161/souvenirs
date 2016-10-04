@@ -49,6 +49,7 @@
                         <thead>
                             <tr>
                                 <th>id</th>
+                                <th>isSold</th>
                                 <th>title</th>
                                 <th>lacquer</th>
                                 <th>fastening</th>
@@ -61,15 +62,18 @@
                                 <th>photo2</th>
                                 <th>photo3</th>
                                 <th>photo4</th>
-                                <th>description</th>   
+                                <th>description</th>
+                               
                             </tr>
                         </thead>
                         <tbody>
-                        <form action="generatePDF.htm" method="POST" accept-charset="UTF-8" >
+                        <form id="formDelete" action="deleteGoods.htm" method="GET" ></form>
+                        <form id="formGenerate" action="generatePDF.htm" method="POST" accept-charset="UTF-8" ></form>
 
                             <c:forEach var="o" items="${objects}">
                                 <tr>
-                                    <td>${o.id} <input type="checkbox" name="print" value="${o.id}"></td>
+                                    <td>${o.id} <input type="checkbox" name="print" value="${o.id}" form="formGenerate"></td>
+                                    <td>${o.isSold} <input type="checkbox" name="isSold" value="${o.id}" form="formDelete"></td>
                                     <td>${o.title}</td>
                                     <td>${o.lacquer}</td>
                                     <td>${o.fastening}</td>
@@ -83,6 +87,7 @@
                                     <td>${o.photo3}</td>
                                     <td>${o.photo4}</td>
                                     <td>${o.description}</td>
+                                    
                                 </tr>
                             </c:forEach>
 
@@ -98,10 +103,9 @@
             <div class="col-lg-5">
                 <div class="row">
                     <!-- Название предприятия: <input type="text" name="factory" maxlength="30"   ><br><br>-->
-                    <input type="submit" value="Make proposal">
-
-                    </form>
-
+                    <input type="submit" value="Make proposal" form="formGenerate" >
+                    <input type="submit" value="Delete goods" form="formDelete">
+                         
 
 
                 </div>

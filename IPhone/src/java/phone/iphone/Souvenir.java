@@ -14,7 +14,7 @@ public class Souvenir {
         ;
     }
 
-    public Souvenir(String id, String title, String lacquer, String fastening, String bevel, int length, int weigth, int thickness, int price, String photo1, String photo2, String photo3, String photo4, String description) {
+    public Souvenir(String id, String title, String lacquer, String fastening, String bevel, int length, int weigth, int thickness, int price, String photo1, String photo2, String photo3, String photo4, String description,String isSold) {
         this.id = id;
         this.title = title;
         this.lacquer = lacquer;
@@ -29,6 +29,7 @@ public class Souvenir {
         this.photo3 = photo3;
         this.photo4 = photo4;
         this.description = description;
+        this.isSold=isSold;
     }
 
     public void setId(String id) {
@@ -142,7 +143,14 @@ public class Souvenir {
     public String getDescription() {
         return description;
     }
+    public void setIsSold(String isSold) {
+        this.isSold=isSold;
+    }
 
+    public String getIsSold() {
+        return isSold;
+    }
+    
     String id;
     String title;
 
@@ -159,5 +167,6 @@ public class Souvenir {
     String photo3;
     String photo4;
     String description;
+    String isSold;
 
 }

@@ -33,6 +33,7 @@ public class SouvenirMapper implements RowMapper<Souvenir> {
         souvenir.setPhoto3(rs.getString("photo3"));
         souvenir.setPhoto4(rs.getString("photo4"));
         souvenir.setDescription(rs.getString("description"));
+        souvenir.setIsSold(rs.getString("isSold"));
         return souvenir;
     }
 }

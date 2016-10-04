@@ -1,5 +1,7 @@
 package phone.iphone;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,11 +15,12 @@ public class IphoneJDBCTemplate implements IphoneDAO {
 
     private DataSource dataSource;
     private NamedParameterJdbcTemplate jdbcTemplateObject;
-    
-    public void setOrder(Map namedParameters){
-        String sql="insert into orders(customer_name,phone,email,id_good) values (:customer_name,:phone,:email,:id_good);";
+
+    public void setOrder(Map namedParameters) {
+        String sql = "insert into orders(customer_name,phone,email,id_good) values (:customer_name,:phone,:email,:id_good);";
         jdbcTemplateObject.update(sql, namedParameters);
     }
+
     /*
     public User getUser(String tableName, String customer,String password ){
         MapSqlParameterSource params = new MapSqlParameterSource();
@@ -26,8 +29,15 @@ public class IphoneJDBCTemplate implements IphoneDAO {
         jdbcTemplateObject.queryForObject("SELECT * FROM"+tableName+"WHERE customer = :customer AND password=:password",params, new SouvenirMapper());
         
     }*/
-    
-   
+
+    public void updateIsSold(String[] isSoldId) {
+        String sql = "update goods set isSold='yes' where id=:isSold";
+        for (String soldId : isSoldId) {
+            Map namedParameters = new HashMap();
+            namedParameters.put("isSold", soldId);
+            jdbcTemplateObject.update(sql, namedParameters);
+        }
+    }
 
     @Override
     public List<Souvenir> getListSouvenir() {
@@ -48,8 +58,6 @@ public class IphoneJDBCTemplate implements IphoneDAO {
         jdbcTemplateObject.update(sql, namedParameters);
 
     }
-    
-  
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;

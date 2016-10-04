@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/resources/css/login.css</url>
+            <bookmark id="1">
+                <name/>
+                <line>111</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/я/Desktop/work%20folder/souvenirs/IPhone/src/java/controllers/ControllerAdmin.java</file>
+            <file>file:/C:/Users/я/Desktop/work%20folder/souvenirs/IPhone/src/java/phone/iphone/IphoneJDBCTemplate.java</file>
+            <file>file:/C:/Users/я/Desktop/work%20folder/souvenirs/IPhone/src/java/phone/iphone/IphoneDAO.java</file>
+            <file>file:/C:/Users/я/Desktop/work%20folder/souvenirs/IPhone/src/java/controllers/ControlleMain.java</file>
+            <file>file:/C:/Users/я/Desktop/work%20folder/souvenirs/IPhone/src/java/controllers/ControllerBasket.java</file>
+        </group>
     </open-files>
 </project-private>

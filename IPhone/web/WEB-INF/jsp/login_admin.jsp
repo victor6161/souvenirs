@@ -1,28 +1,42 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>	
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> </title>
-        <link href="<c:url value = "/resources/css/login_button.css"/>" rel="stylesheet">
-    </head>
-    <body>
-        <div style="position: absolute; top:40%;left:40%">
-            <form action="j_spring_security_check" id="login" method="POST">
-
-
-                <input id="username" name="username" type="text" placeholder="Логин" autofocus required><br><br>   
-                <input id="password" name="password"  type="password" placeholder="Пароль" required><br><br> 
-
-
-                <div style="position: absolute; left:30%">
-                    <input type="submit" id="submit" value="ВОЙТИ">
-                </div>
-
-            </form>
-        </div>
-    </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name='robots' content='all, follow' />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>Great admin</title>   
+    <link href="resources/css/login.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/login-blue.css" rel="stylesheet" type="text/css" />  <!-- color skin: blue / red / green / dark -->
+  </head>
+  <body>
+  <div id="main">
+    <div id="content">
+      <div id="login">
+        
+        <div id="logo"><span>Great Admin</span></div>
+                
+        <form method="get" action="admin.htm" id="form-login" class="formBox">
+          <fieldset>
+            <div class="form-col">
+                <label for="username" class="lab">Username <span class="warning"></span></label>
+                <input type="text" name="username" class="input" id="username" />
+            </div>
+            <div class="form-col form-col-right">
+                <label for="password" class="lab">Password <span class="warning"></span></label>
+                <input type="password" name="password" class="input" id="password" />
+            </div>
+            <div class="form-col form-col-check">
+              <label><input type="checkbox" name="remeber_me" class="checkbox" />Remember me on this computer</label> 
+            </div>
+            <div class="form-col form-col-right"> 
+              <input type="submit" name="" value="Login" class="submit" />
+            </div>                 
+          </fieldset>
+        </form>
+        
+      </div>
+    </div><!-- /content -->    
+  </div><!-- /main -->
+  </body>
 </html>

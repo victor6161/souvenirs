@@ -33,8 +33,8 @@ public class ControllerAdmin {
 
     @RequestMapping("/login_admin")
     public ModelAndView loginAdmin() {
-       
-        return  new ModelAndView("/login_admin");
+
+        return new ModelAndView("/login_admin");
     }
 
     @RequestMapping("/admin")
@@ -123,5 +123,17 @@ public class ControllerAdmin {
         }
         return mv;
     }
-
+    @RequestMapping(value = "/deleteGoods", method = RequestMethod.GET)
+    public ModelAndView deleteGoods(HttpServletRequest request) {
+        Logger.getLogger(ControlleMain.class.getName()).log(Level.SEVERE,"sadf");
+        ModelAndView mv = new ModelAndView("/admin");
+        List<Souvenir> listSouvenir1 = iphoneJDBCTemplate.getListSouvenir();
+        mv.addObject("objects", listSouvenir1);
+        
+        
+        String[] isSold = request.getParameterValues("isSold");
+        
+        iphoneJDBCTemplate.updateIsSold( isSold); 
+        return mv;
+    }
 }

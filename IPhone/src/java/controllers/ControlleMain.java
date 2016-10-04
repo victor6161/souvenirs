@@ -58,11 +58,19 @@ public class ControlleMain {
     public ModelAndView iphones(HttpSession session) {
         ModelAndView mv = new ModelAndView("ru_all_iphone");
 
-        List<Souvenir> listSouvenir1 = iphoneJDBCTemplate.getListSouvenir();
-        mv.addObject("listSouvenir", listSouvenir1);
-
+        List<Souvenir> listSouvenirAll = iphoneJDBCTemplate.getListSouvenir();
+         List<Souvenir> listSouvenirNotSold=new ArrayList();
+        for(int i=0;i<listSouvenirAll.size();i++){
+            if(!listSouvenirAll.get(i).getIsSold().equals("yes"))
+                listSouvenirNotSold.add(listSouvenirAll.get(i));
+        }
+        
+        
+        
+        mv.addObject("listSouvenir", listSouvenirNotSold);
+        
        
-        mv.addObject("listTitle", unuqieList((ArrayList<Souvenir>) listSouvenir1));
+        mv.addObject("listTitle", unuqieList((ArrayList<Souvenir>) listSouvenirNotSold));
 
         session.setAttribute("page", "iphones");
 
